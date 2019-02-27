@@ -1,0 +1,24 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark secondary-color lighten-1">
+  <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/list-training']">Scheduler</a></mdb-navbar-brand>
+
+  <links>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item " routerLinkActive="active">
+        <a class="nav-link waves-light" [routerLink]="['/list-training']" mdbWavesEffect>Training</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-light" [routerLink]="['/meeting/list-meeting']" mdbWavesEffect>Meeting</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+        <li routerLinkActive="active"><a class="nav-link waves-light" [routerLink]="['/signup']" mdbWavesEffect>Register
+          </a></li>
+        <li routerLinkActive="active"><a class=" nav-link  waves-light" [routerLink]="['/signin']" mdbWavesEffect>Login
+          </a></li>
+      </ng-template>
+      <li><a style="cursor: pointer; " (click)="onLogout()" *ngIf="authService.isAuthenticated()">LogOut</a></li>
+
+    </ul>
+  </links>
+</mdb-navbar>

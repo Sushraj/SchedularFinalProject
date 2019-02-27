@@ -1,0 +1,78 @@
+<div class="container border border-primary my-4">
+  <div class="d-flex justify-content-center mt-2">
+    <h4>Meeting Form</h4>
+  </div>
+
+
+  <form [formGroup]="this.meetingService.form" class="normal-form" (submit)="onSubmitMeeting()">
+    <mat-grid-list cols="2" rowHeight="500px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="$key" />
+          <mat-form-field>
+            <input formControlName="meetingName" matInput placeholder="Meeting Name" />
+            <mat-error>This Field Is Mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="organizerName" matInput placeholder="Organizer Name" />
+            <mat-error>This Field Is Mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea formControlName="agenda" matInput placeholder="Agenda"></textarea>
+            <mat-error>This Field Is Mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea formControlName="attendeeList" matInput placeholder="AttendeeList"></textarea>
+            <mat-error>This Field Is Mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="controles-container">
+          <div class="form-group">
+            <mat-form-field class="full-width">
+              <mat-label>Start time</mat-label>
+              <input matInput />
+              <input formControlName="starTime" atp-time-picker value="19:00" />
+              <mat-error>You must select a start time.</mat-error>
+            </mat-form-field><br />
+          </div>
+          <div class="form-group">
+            <mat-form-field class="full-width">
+              <mat-label>End time</mat-label>
+              <input matInput />
+              <input formControlName="endTime" atp-time-picker value="19:15" />
+              <mat-error>You must select a start time.</mat-error>
+            </mat-form-field><br />
+          </div>
+          <mat-form-field>
+            <mat-select formControlName="selectRooms" placeholder=" Rooms">
+              <mat-option>None</mat-option>
+              <ng-container *ngFor="let room of roomService.array">
+                <mat-option value="{{ room.$key }}">{{ room.name }}-{{ room.capacity }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="meetingService.form.invalid">
+              Submit
+            </button>
+            <button mat-raised-button color="warn" type="submit" (click)="onClear()">
+              Clear
+            </button>
+            <button mat-raised-button color="accent" [routerLink]="['/meeting/list-meeting']">Back</button>
+          </div>
+          <div class="button-row">
+            <button mat-raised-button [routerLink]="['/meeting/calender']">Calender</button>
+          </div>
+        </div>
+
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>

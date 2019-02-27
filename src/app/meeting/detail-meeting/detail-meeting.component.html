@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto ">
+      <div class="card   border border-primary card-signin my-5 ">
+        <div class="card-body">
+          <h3 class="card-title text-center"><b>Details of Meeting</b></h3>
+          <div class="form-label-group">
+            <div>
+              <lable><b>Meeting Name :-</b></lable>
+              {{detail.meetingName}}
+            </div>
+            <div>
+              <label><b>Organizer Name :-</b></label>
+              {{detail.organizerName}}
+            </div>
+            <div>
+              <label><b>Agenda :-</b></label>
+              {{detail.agenda}}
+            </div>
+            <div>
+              <label><b>Attendee List:-</b></label>
+              {{detail.attendeeList}}
+            </div>
+            <div>
+              <label><b>Date :-</b></label>
+              {{detail.date}}
+            </div>
+            <div>
+              <label><b>Start Time :-</b></label>
+              {{detail.starTime}}
+            </div>
+            <div>
+              <label><b>End Time :-</b></label>
+              {{detail.endTime}}
+            </div>
+            <div>
+              <label><b>Meeting Room:-</b></label>
+              {{detail.selectRooms}}
+            </div>
+            <div>
+              <button type="button" class="btn btn-warning" [routerLink]="['/meeting/list-meeting']">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

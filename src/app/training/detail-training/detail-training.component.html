@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-md-8 col-lg-6 mx-auto ">
+      <div class="card   border border-primary card-signin my-5 ">
+        <div class="card-body">
+          <h3 class="card-title text-center"><b>Details of Training</b></h3>
+          <div class="form-label-group">
+            <div>
+              <lable><b>Topic Name :-</b></lable>
+              {{detail.topic}}
+            </div>
+            <div>
+              <label><b>Trainer Name :-</b></label>
+              {{detail.trainer}}
+            </div>
+            <div>
+              <label><b>Description :-</b></label>
+              {{detail.description}}
+            </div>
+            <div>
+              <label><b>Date :-</b></label>
+              {{detail.date}}
+            </div>
+            <div>
+              <label><b>Start Time :-</b></label>
+              {{detail.starTime}}
+            </div>
+            <div>
+              <label><b>End Time :-</b></label>
+              {{detail.endTime}}
+            </div>
+            <div>
+              <label><b>Select Rooms :-</b></label>
+              {{detail.selectRooms}}
+            </div>
+            <div>
+              <button type="button" class="btn btn-warning" [routerLink]="['/list-training']">Back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

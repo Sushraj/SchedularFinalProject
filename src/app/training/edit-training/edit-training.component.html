@@ -1,0 +1,71 @@
+<div class="container border border-primary my-4">
+  <div class="d-flex justify-content-center mt-2">
+    <h4><b>Edit Training Form </b></h4>
+  </div>
+
+  <form [formGroup]="this.trainingService.form" class="normal-form" (submit)="onSubmit()">
+    <mat-grid-list cols="2" rowHeight="500px">
+      <mat-grid-tile>
+        <div class="controles-container">
+          <input type="hidden" formControlName="$key" />
+          <mat-form-field>
+            <input formControlName="topic" matInput placeholder="Topic Name" />
+            <mat-error>This Field Is Mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="trainer" matInput placeholder="Trainer Name" />
+            <mat-error>This Field Is Mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <textarea formControlName="description" matInput placeholder="Descriptin"></textarea>
+            <mat-error>This Field Is Mandatory</mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a date" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="controles-container">
+
+          <div class="form-group">
+            <mat-form-field class="full-width">
+              <mat-label>Start time</mat-label>
+              <input matInput />
+              <input formControlName="starTime" atp-time-picker value="19:00" />
+              <mat-error>You must select a start time.</mat-error>
+            </mat-form-field><br />
+          </div>
+          <div class="form-group">
+            <mat-form-field class="full-width">
+              <mat-label>End time</mat-label>
+              <input matInput />
+              <input formControlName="endTime" atp-time-picker value="19:15" />
+              <mat-error>You must select a start time.</mat-error>
+            </mat-form-field><br />
+          </div>
+          <mat-form-field>
+            <mat-select formControlName="selectRooms" placeholder=" Rooms">
+              <mat-option>None</mat-option>
+              <ng-container *ngFor="let room of roomservice.array">
+                <mat-option value="{{ room.$key }}">{{ room.name }}-{{ room.capacity }}</mat-option>
+              </ng-container>
+            </mat-select>
+          </mat-form-field>
+          <div class="button-row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="trainingService.form.invalid">
+              Submit
+            </button>
+            <button mat-raised-button color="warn" type="submit" (click)="onClear()">
+              Clear
+            </button>
+            <button mat-raised-button color="accent" [routerLink]="['/list-training']">Back</button>
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </form>
+</div>
